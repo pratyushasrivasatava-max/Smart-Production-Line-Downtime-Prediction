@@ -1,0 +1,6 @@
+{
+  "name": "Smart Production-Line Downtime Prediction",
+  "description": "Real-time IoT factory simulation, MQTT HiveMQ streaming, predictive ML downtime forecasting, anomaly detection, and interactive industrial dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

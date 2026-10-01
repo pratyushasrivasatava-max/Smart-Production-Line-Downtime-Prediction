@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  hivemq:
+    image: hivemq/hivemq-ce:latest
+    container_name: hivemq-broker
+    ports:
+      - "1883:1883"   # MQTT plain TCP
+      - "8080:8080"   # HiveMQ Control Center & WebSocket endpoint
+    environment:
+      - HIVEMQ_ALLOW_ALL_CLIENTS=true
+    volumes:
+      - hivemq-data:/opt/hivemq/data
+      - hivemq-log:/opt/hivemq/log
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 2 bash -c '</dev/tcp/localhost/1883' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hivemq-data:
+  hivemq-log:
